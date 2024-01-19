@@ -1,0 +1,11 @@
+.button{
+    
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    padding: 12px 0px;
+    border-radius: 50px;
+    border: 1px solid var(--Orange, #FA8B02);
+    background-color: #fff;
+   color: var(--Orange, #FA8B02);
+}
