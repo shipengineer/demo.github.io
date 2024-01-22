@@ -1,4 +1,4 @@
-@import url('../../app/Main-style/origin.css');
+@import url("../../app/Main-style/origin.scss");
 .calendarBody {
   display: flex;
   padding: 10px;
@@ -6,4 +6,4 @@
   align-items: flex-start;
   gap: 30px;
   align-self: stretch;
-} /*# sourceMappingURL=calendar.module.css.map */
+}/*# sourceMappingURL=calendar.module.css.map */

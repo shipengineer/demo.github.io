@@ -1,6 +1,7 @@
-import { useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import styles from './calendar.module.css';
 import moment from 'moment';
+import DatePicker from '../../shared/calendarHelpers/datePicker/DatePicker';
 const initialState = {
   selectedDate: moment().date(),
   selectedMonth: moment().month(),
@@ -37,23 +38,27 @@ function Reducer(state, action) {
         };
       }
     case 'setDate':
-
-    case 'setYear':
-
-    case 'setMonth':
-
+      console.log(action.newDate);
+      return {...state,selectedDate:action.newDate}
     default:
       return state;
   }
 }
-const Calendar = (props) => {
+const Calendar = () => {
   const [state, dispatch] = useReducer(Reducer, initialState);
   const [visible, setVisible] = useState(true);
 
+  function datePickHandler(e){
+    console.log(Number.parseInt(e.target.textContent));
+    e.preventDefault();
+    dispatch({type:'setDate',newDate: Number.parseInt(e.target.textContent)})
+    e.target.className = 'green'
+  }
+ 
   return (
-    <div className={styles.calendarBody}>
-      <div className={styles.header}>DATE</div>
-      {visible ? (
+    <div className={styles.calendarBody} onClick={datePickHandler}>
+      <div className={styles.header} onClick={()=>setVisible(!visible)}>{visible?'Choose Date':'DATE'}</div>
+      {visible && (
         <div className={styles.month}>
           <span>
             {moment().month(state.selectedMonth).format('MMMM')}
@@ -75,10 +80,9 @@ const Calendar = (props) => {
             +
           </button>
           <div className={styles.calendarTable}></div>
+          <DatePicker props = {state} />
         </div>
-      ) : (
-        <span className={styles.message}>Choose Date</span>
-      )}
+      ) }
     </div>
   );
 };
