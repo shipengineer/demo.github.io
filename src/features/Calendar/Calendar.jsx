@@ -1,14 +1,13 @@
-import { useEffect, useReducer, useState } from 'react';
+import {  useReducer, useState } from 'react';
 import styles from './calendar.module.css';
 import moment from 'moment';
-import DatePicker from '../../shared/calendarHelpers/datePicker/DatePicker';
+import DatePicker from '../../shared/calendarHelpers/datePicker/DatePicker.jsx';
 const initialState = {
   selectedDate: moment().date(),
   selectedMonth: moment().month(),
   selectedYear: moment().year(),
 };
 function Reducer(state, action) {
-  console.log(state);
   switch (action.type) {
     case 'incrementMonth':
       if (state.selectedMonth > 10) {
@@ -38,7 +37,6 @@ function Reducer(state, action) {
         };
       }
     case 'setDate':
-      console.log(action.newDate);
       return {...state,selectedDate:action.newDate}
     default:
       return state;
@@ -49,10 +47,9 @@ const Calendar = () => {
   const [visible, setVisible] = useState(true);
 
   function datePickHandler(e){
-    console.log(Number.parseInt(e.target.textContent));
+    
     e.preventDefault();
     dispatch({type:'setDate',newDate: Number.parseInt(e.target.textContent)})
-    e.target.className = 'green'
   }
  
   return (

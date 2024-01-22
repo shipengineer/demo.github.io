@@ -1,3 +1,17 @@
 .greyDay {
   background-color: lightgrey;
+  cursor: not-allowed;
+}
+.whiteDay {
+  cursor: pointer;
+}
+.shell {
+  padding: 10px;
+  text-align: center;
+  color: var(--black, #333);
+  font-family: Poppins;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
